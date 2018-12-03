@@ -12,15 +12,20 @@ jdk: oraclejdk9
 env:
   global:
   - RAILS_ENV=test
-
 before_install:
 - docker pull solr:7.4.0
 - docker run -d -p 8983:8983 -v "$(pwd)"/solr/conf:/myconfig solr:7.4.0 solr-create -c blacklight-core -d /myconfig
 - docker ps -a
+before_script: bundle exec rails assets:precompile
+script: bundle exec rake
+scropt: bundle exec niftany
 
-before_script:
-- bundle exec rails assets:precompile
+jobs:
+  include:
+    - stage: test_traject
+      rvm: jruby-9.1.9.0
+      script: bundle exec traject -s processing_thread_pool=5 -c lib/traject/psulib_config.rb lib/traject/fixtures.mrc
 
-script:
-- bundle exec niftany
-- bundle exec rake
+stages:
+  - test_traject
+  - test
