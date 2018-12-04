@@ -35,6 +35,7 @@ settings do
   # Where to send logging
   provide 'log.file', 'log/traject.log'
   provide 'log.error_file', 'log/traject_error.log'
+  provide 'solr_writer.commit_on_close', 'true'
 
   if is_jruby
     provide 'reader_class_name', 'Traject::Marc4JReader'
@@ -42,7 +43,6 @@ settings do
     provide 'marc4j_reader.source_encoding', 'UTF-8'
     # defaults to 1 less than the number of processors detected on your machine
     # provide 'processing_thread_pool', 7
-    provide 'solrj_writer.commit_on_close', 'true'
   end
 end
 

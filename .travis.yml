@@ -1,7 +1,6 @@
 language: ruby
 rvm:
 - 2.5.3
-- jruby-9.1.9.0
 bundler_args: --without development
 sudo: false
 cache:
@@ -9,7 +8,6 @@ cache:
   yarn: true
   directories:
   - tmp/solr_dl/
-jdk: oraclejdk9
 env:
   global:
   - RAILS_ENV=test
@@ -20,13 +18,3 @@ before_install:
 before_script: bundle exec rails assets:precompile
 script: bundle exec rake
 script: bundle exec niftany
-
-#jobs:
-#  include:
-#    - stage: test_traject
-#      rvm: jruby-9.1.9.0
-#      script: bundle exec traject -s processing_thread_pool=5 -c lib/traject/psulib_config.rb lib/traject/fixtures.mrc
-#
-#stages:
-#  - test_traject
-#  - test
