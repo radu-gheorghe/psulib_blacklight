@@ -2,7 +2,7 @@
   "name": "Psulcat",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "3.5",
+    "@rails/webpacker": "^4.0.0-rc.2",
     "blacklight-frontend": "https://github.com/projectblacklight/blacklight#c435caddf14af6aa36c1428995b8cc52d76d4bf2",
     "blacklight-marc": "https://github.com/projectblacklight/blacklight-marc.git#v6.2.0",
     "caniuse-lite": "^1.0.30000697",
@@ -10,7 +10,8 @@
     "turbolinks": "^5.2.0"
   },
   "devDependencies": {
-    "webpack": "^3.0.0",
-    "webpack-dev-server": "2.11.2"
+    "webpack": "^4.0.0",
+    "webpack-cli": "^3.2.1",
+    "webpack-dev-server": ">=3.1.11"
   }
 }
